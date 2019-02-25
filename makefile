@@ -16,12 +16,13 @@ all:
 
 git-clean:
 	-rm -rf charts
-	-git rm -r azure-pipelines.yml Dockerfile draft.toml .dockerignore .draft-tasks.toml .draftignore
+	-git rm -rf azure-pipelines.yml Dockerfile draft.toml .dockerignore .draft-tasks.toml .draftignore charts
 	-git commit -m "reset demo"
 	-git push
 
 helm-delete:
 	-helm delete --purge jfrog
+	-helm delete --purge jfrog-prod
 
 azd-clean:
 	@scripts/azdo-cleanup.sh
