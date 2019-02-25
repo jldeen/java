@@ -4,6 +4,7 @@
 replicaCount: 1
 image:
   pullPolicy: IfNotPresent
+imagepullSecrets: jfrog
 service:
   name: java
   type: ClusterIP
@@ -17,4 +18,9 @@ resources:
     cpu: 100m
     memory: 128Mi
 ingress:
-  enabled: false
+  enabled: true
+  hostname: jfrog19.k8s.az.jessicadeen.com
+  annotations:
+     kubernetes.io/ingress.class: nginx
+     kubernetes.io/tls-acme: "true"
+  tls: true
