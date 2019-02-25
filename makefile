@@ -15,7 +15,8 @@ all:
 # 	-git fetch --prune
 
 git-clean:
-	-git rm -r azure-pipelines.yml charts Dockerfile draft.toml .dockerignore .draft-tasks.toml .draftignore
+	-rm -rf charts
+	-git rm -r azure-pipelines.yml Dockerfile draft.toml .dockerignore .draft-tasks.toml .draftignore
 	-git commit -m "reset demo"
 	-git push
 
