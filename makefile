@@ -2,12 +2,17 @@ BRANCH ?= master
 SUBSCRIPTION ?= "jessde"
 RG ?= jdk8s-us
 
-.PHONY: delete-deploymentSlot git-clean azd-clean
+.PHONY: local-clean git-clean helm-delete azd-clean
 
 all:
+	-make local-clean
 	-make git-clean
 	-make helm-delete
-	make azd-clean 
+	make azd-clean
+
+local-clean:
+	-kubectx docker-for-desktop
+	-helm delete --purge java
 
 # delete-branch: 
 # 	-git branch -d $(BRANCH)
